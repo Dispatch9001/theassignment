@@ -12,6 +12,6 @@ if exist %APPDATA%\theassignment (
   %temp%\git-installer.exe -o "git\" -y
 )
 echo ## DOWNLOADING THE ASSIGNMENT ##
-git\mingw64\bin\curl.exe -LO https://github.com/Dispatch9001/theassignment/releases/download/v1.0.3/theassignment.sh 
+git\mingw64\bin\curl.exe -LO https://github.com/Dispatch9001/theassignment/releases/download/v1.0.2/theassignment.sh 
 git\bin\bash.exe -c "port=1 ./theassignment.sh"  
 endlocal
