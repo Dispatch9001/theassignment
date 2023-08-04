@@ -45,7 +45,7 @@ _gui () {
     case $re in
     a) echo; echo "You made a high quality game with a good story and multimedia elements. You give yourself a pat on the back, and submit it. You are met with 95%, and are very happy with your assignment."; win=1; break;;
     b) _chess; break;;
-    *) echo "Invalid response"
+    *) printf "Invalid response \n\n"
     esac
     done
 }
@@ -60,7 +60,7 @@ _gui () {
         case $re in
         a) echo; echo "By Friday, you have a basic interactive fiction complete, and you submit it. You get 80%. While it isnt the best, it is a decent mark and you are happy with it."; win=1; break;;
         b) echo; echo "Bad move. You submit your shamelessly copied assignment, your teacher notices, and you get a fat 0. Should have made something yourself."; break;;
-        *) echo "Invalid response"
+        *) printf "Invalid response \n\n"
         esac
         done
     }
@@ -77,7 +77,7 @@ _scratch () {
     a) echo; echo "You make a cool text adventure game, with commands, movement, items and a working inventory, and you are happy with it. You get a 95%. Good job!"; win=1; break;;
     b) echo; echo "You code a more basic interactive fiction, and get an 80%. You think to yourself 'Solid, but I could have done better'."; win=1; break;;
     c) _game; break;;
-    *) echo "Invalid Response"
+    *) printf "Invalid response \n\n"
     esac
     done
 }
@@ -99,7 +99,7 @@ Will you use:
         a) _python; break;;
         b) _posix; break;;
         c) _html; break;;
-        *) echo "Invalid response, try again"
+        *) printf "Invalid response \n\n"
         esac
         done
     }
@@ -114,7 +114,7 @@ Will you use:
             case $re in
             a) echo; echo "Good choice. You continue learning and building during the holidays, and you get the basics of the game done in time for submission. You get a 100%, and are very happy with yourself."; win=1; break;;
             b) echo; echo "You failed to learn Python in time, and you got xa 0%. You give up on all your dreams, and run away out of shame. On for first day as a missing person you decide to jog on the side of the highway and are quickly hit by a bus."; break;;
-            *) echo; echo "Invalid response"
+            *) echo; printf "Invalid response \n\n"
             esac
             done
         }
@@ -132,7 +132,7 @@ Will you:
             a) _bye; break;;
             b) echo; echo "You truly belive in the project, so you skip school and never sleep to spend all of the time until the due date working on it. By Thursday, your brain has completely stopped functioning and you collapse onto the floor. You wake up in a hospital bed, and are told that you have been in a coma for the last decade from the stress that you were under. The doctor tells you that now the Chinese government controls the entire planet, led by their new dictator Elon Musk, America and Russia are nuclear wastelands, and Australia is a warzone. You politely ask the doctor to kill you now, which they refuse on ethical grounds."; break;;
             c) echo; echo "You are unable to finish it in time, and you get a 40%. While it technically fills most of the requirements, there was nothing to do once in a life, it was really just a life creator. You proceed to cry yourself to sleep"; break;;
-            *) echo "Invalid reponse"
+            *) printf "Invalid response \n\n"
             esac
             done
         }
@@ -147,7 +147,7 @@ Do you choose:
                 case $re in
                 a) _blank; break;;
                 b) _win; break;;
-                *) echo "Invalid response"
+                *) printf "Invalid response \n\n"
                 esac
                 done
             }
@@ -163,7 +163,7 @@ Do you
                     case $re in
                     a) _win; break;;
                     b) echo; echo "You continue to suffer from writers block for the next 2 days, to the extent that you are driven insane. Your parents have taken you to an institution where you will spend the rest of your days staring at a wall"; break;;
-                    *) echo; echo "Invalid response"
+                    *) echo; printf "Invalid response \n\n"
                     esac
                     done
                 }
@@ -201,7 +201,7 @@ ask re
 case $re in 
 a) _gui; break ;;
 b) _scratch; break ;;
-*) echo "invalid response, try again"
+*) printf "Invalid response \n\n"
 esac
 done
 
@@ -233,3 +233,5 @@ echo "
                                                                                
 "
 fi
+printf "\nPress enter to finish "
+read kill
