@@ -1,5 +1,6 @@
 #!/bin/sh
 redo=0
+win=0
 case $* in
   *-d*) # Debug Mode #
  echo "------------------
@@ -42,7 +43,7 @@ _gui () {
 [b] Decide to leave it to the last minute and spend your class time playing chess"
     ask re
     case $re in
-    a) echo; echo "You made a high quality game with a good story and multimedia elements. You give yourself a pat on the back, and submit it. You are met with 95%, and are very happy with your assignment."; break;;
+    a) echo; echo "You made a high quality game with a good story and multimedia elements. You give yourself a pat on the back, and submit it. You are met with 95%, and are very happy with your assignment."; win=1; break;;
     b) _chess; break;;
     *) echo "Invalid response"
     esac
@@ -57,7 +58,7 @@ _gui () {
 [b] Copy a friend"
         ask re
         case $re in
-        a) echo; echo "By Friday, you have a basic interactive fiction complete, and you submit it. You get 80%. While it isnt the best, it is a decent mark and you are happy with it."; break;;
+        a) echo; echo "By Friday, you have a basic interactive fiction complete, and you submit it. You get 80%. While it isnt the best, it is a decent mark and you are happy with it."; win=1; break;;
         b) echo; echo "Bad move. You submit your shamelessly copied assignment, your teacher notices, and you get a fat 0. Should have made something yourself."; break;;
         *) echo "Invalid response"
         esac
@@ -73,8 +74,8 @@ _scratch () {
     while :; do
     ask re
     case $re in
-    a) echo; echo "You make a cool text adventure game, with commands, movement, items and a working inventory, and you are happy with it. You get a 95%. Good job!"; break;;
-    b) echo; echo "You code a more basic interactive fiction, and get an 80%. You think to yourself 'Solid, but I could have done better'."; break;;
+    a) echo; echo "You make a cool text adventure game, with commands, movement, items and a working inventory, and you are happy with it. You get a 95%. Good job!"; win=1; break;;
+    b) echo; echo "You code a more basic interactive fiction, and get an 80%. You think to yourself 'Solid, but I could have done better'."; win=1; break;;
     c) _game; break;;
     *) echo "Invalid Response"
     esac
@@ -82,8 +83,8 @@ _scratch () {
 }
     _game () {
         echo
-        if [ $redo = 1 ]; then
-            echo "That was a stupid move. While you are thinking about it, you have an idea to make a life simulation game, similar to Bitlife. This is something which you thought about a while ago, since you used to love playing Bitlife, but that game had been ruined over time by ads and in app purchases, so you wanted to make a version of 'what the game could have been'. Now you need to choose what language you will write it in."
+        if [ $redo = 0 ]; then
+            echo "That was a stupid move. While you are thinking about it, you have an idea to make a life simulation game. Now you need to choose what language you will write it in."
         fi
         echo "
 Will you use:
@@ -111,8 +112,8 @@ Will you use:
             while :; do
             ask re
             case $re in
-            a) echo; echo "Good choice. You continue learning and building during the holidays, and you get the basics of the game done in time for submission. You get a 100%, and are very happy with yourself."; break;;
-            b) _outta; break;;
+            a) echo; echo "Good choice. You continue learning and building during the holidays, and you get the basics of the game done in time for submission. You get a 100%, and are very happy with yourself."; win=1; break;;
+            b) echo; echo "You failed to learn Python in time, and you got a 0%. You give up on all your dreams, and run away out of shame. On for first day as a missing person you decide to jog on the side of the highway and are quickly hit by a bus."; break;;
             *) echo; echo "Invalid response"
             esac
             done
@@ -179,13 +180,14 @@ Will you
             case $re in
             a) redo=1; _game; break;;
             b) echo; echo "You get a fat 0%. Your parents disown you, and you drop out of school. You then get a dead-end job where you will work at for the rest of your life"; break;;
-            c) echo; echo "You fail to learn it in time and get a 0%. Your parents disown you, and you drop out of school. You then get a dead-end job where you will work at for the rest of your life"; break;;
+            c) echo; echo "You fail to learn it in time and get a 0%. Your parents disown you, and you drop out of school. You turn to a life of crime which quickly catches up with you and you live your remaiing years in jail."; break;;
             esac
             done
         }
 _win () {
     echo
     echo "This is a brilliant idea! Truly A grade worthy. You begin mind mapping the story of making your assignment, including all the decisions that you made, and include the endings that you think would have happened if you chose them at the time. You spend all of Thursday working on it, and then fill out the portfolio. You submit the assignment on Friday and are met with the praise and admiration of all of your classmates as well as your teacher. You get a 100%!"
+    win=1
 }
 
 echo
@@ -202,6 +204,32 @@ b) _scratch; break ;;
 *) echo "invalid response, try again"
 esac
 done
-sleep 1
+
+if [ "$win" = 1 ]; then
 echo "
-THE END"
+                                                           
+                       #                            ###    
+ ##   ## ####### ##   ##   ##   ## ###### ###  ##   ###    
+ ##   ##      ## ##   ##   ## # ##   ##   #### ##   ###    
+ ####### ##   ## ##   ##   #######   ##   ## ####   ###    
+      ## ##   ## ##   ##   ### ###   ##   ##  ###          
+ ####### ####### #######   ##   ## ###### ##   ##   ###    
+"
+else
+echo "
+'||' '|'  ..|''||   '||'  '|'    '||'       ..|''||    .|'''.|  |''||''| 
+  || |   .|'    ||   ||    |      ||       .|'    ||   ||..  '     ||    
+   ||    ||      ||  ||    |      ||       ||      ||   ''|||.     ||    
+   ||    '|.     ||  ||    |      ||       '|.     || .     '||    ||    
+  .||.    ''|...|'    '|..'      .||.....|  ''|...|'  |'....|'    .||.   
+                                                                         
+                                                                         
+|''||''| '||'  '||' '||''''|      ..|'''.|      |     '||    ||' '||''''|  .|. 
+   ||     ||    ||   ||  .       .|'     '     |||     |||  |||   ||  .    ||| 
+   ||     ||''''||   ||''|       ||    ....   |  ||    |'|..'||   ||''|    '|' 
+   ||     ||    ||   ||          '|.    ||   .''''|.   | '|' ||   ||        |  
+  .||.   .||.  .||. .||.....|     ''|...'|  .|.  .||. .|. | .||. .||.....|  .  
+                                                                           '|' 
+                                                                               
+"
+fi
