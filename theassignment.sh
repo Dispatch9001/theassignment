@@ -30,7 +30,7 @@ DEBUG MODE ENABLED
 esac
 
 ask () {
-    printf ">> "
+    printf "Type your answer here --> "
     read -r "$1"
 }
 ## GUI ##
@@ -113,7 +113,7 @@ Will you use:
             ask re
             case $re in
             a) echo; echo "Good choice. You continue learning and building during the holidays, and you get the basics of the game done in time for submission. You get a 100%, and are very happy with yourself."; win=1; break;;
-            b) echo; echo "You failed to learn Python in time, and you got a 0%. You give up on all your dreams, and run away out of shame. On for first day as a missing person you decide to jog on the side of the highway and are quickly hit by a bus."; break;;
+            b) echo; echo "You failed to learn Python in time, and you got xa 0%. You give up on all your dreams, and run away out of shame. On for first day as a missing person you decide to jog on the side of the highway and are quickly hit by a bus."; break;;
             *) echo; echo "Invalid response"
             esac
             done
